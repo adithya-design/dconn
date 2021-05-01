@@ -1,3 +1,4 @@
+import 'package:dconn/mainhome.dart';
 import 'package:flutter/material.dart';
 import 'package:dconn/screens/welcome_screen.dart';
 import 'package:dconn/screens/login_screen.dart';
@@ -16,6 +17,7 @@ class Dconn extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
         ChatScreen.id: (context) => ChatScreen(),
+        Mainhome.id: (context) => Mainhome(),
       },
     );
   }

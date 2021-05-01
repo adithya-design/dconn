@@ -1,3 +1,4 @@
+import 'package:dconn/mainhome.dart';
 import 'package:flutter/material.dart';
 import 'package:dconn/constants.dart';
 import 'package:dconn/components/rounded_button.dart';
@@ -96,7 +97,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   final newUser = await _auth.createUserWithEmailAndPassword(
                       email: email, password: password);
                   if (newUser != null) {
-                    Navigator.pushNamed(context, ChatScreen.id);
+                    Navigator.pushNamed(context, Mainhome.id);
                   }
                 } catch (e) {
                   print(e);

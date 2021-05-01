@@ -1,3 +1,4 @@
+import 'package:dconn/mainhome.dart';
 import 'package:dconn/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dconn/components/rounded_button.dart';
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   final user = await _auth.signInWithEmailAndPassword(
                       email: email, password: password);
                   if (user != null) {
-                    Navigator.pushNamed(context, ChatScreen.id);
+                    Navigator.pushNamed(context, Mainhome.id);
                   }
                 } catch (e) {
                   print(e);
