@@ -1,7 +1,10 @@
+import 'package:dconn/screens/chats.dart';
 import 'package:flutter/material.dart';
 import 'package:dconn/screens/chat_screen.dart';
 import 'package:dconn/screens/document_screen.dart';
 import 'package:dconn/screens/home_screen.dart';
+import 'package:dconn/screens/calls.dart';
+import 'package:dconn/screens/chats.dart';
 
 class Mainhome extends StatefulWidget {
   static const id = 'mainhome';
@@ -13,9 +16,9 @@ class _MainhomeState extends State<Mainhome> {
   int index = 0;
 
   List<Widget> list = [
-    Home(),
-    ChatScreen(),
-    Documents()
+    Chats(),
+    Documents(),
+    Calls(),
     //About us()
     //profile()
   ];
@@ -68,18 +71,18 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () => onTap(context, 0),
-            ),
-            ListTile(
               leading: Icon(Icons.chat),
               title: Text('Chat'),
-              onTap: () => onTap(context, 1),
+              onTap: () => onTap(context, 0),
             ),
             ListTile(
               leading: Icon(Icons.insert_drive_file),
               title: Text('Documents'),
+              onTap: () => onTap(context, 1),
+            ),
+            ListTile(
+              leading: Icon(Icons.call),
+              title: Text('Call'),
               onTap: () => onTap(context, 2),
             ),
             ListTile(
