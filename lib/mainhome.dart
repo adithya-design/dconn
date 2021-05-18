@@ -1,10 +1,10 @@
 import 'package:dconn/screens/chats.dart';
 import 'package:flutter/material.dart';
-import 'package:dconn/screens/chat_screen.dart';
 import 'package:dconn/screens/document_screen.dart';
 import 'package:dconn/screens/home_screen.dart';
 import 'package:dconn/screens/calls.dart';
 import 'package:dconn/screens/chats.dart';
+import 'package:dconn/screens/Note.dart';
 
 class Mainhome extends StatefulWidget {
   static const id = 'mainhome';
@@ -19,6 +19,7 @@ class _MainhomeState extends State<Mainhome> {
     Chats(),
     Documents(),
     Calls(),
+    Note(),
     //About us()
     //profile()
   ];
@@ -45,7 +46,7 @@ class _MainhomeState extends State<Mainhome> {
 }
 
 class MyDrawer extends StatelessWidget {
-  final Function onTap;
+  var onTap;
   MyDrawer({this.onTap});
   @override
   Widget build(BuildContext context) {
@@ -86,8 +87,8 @@ class MyDrawer extends StatelessWidget {
               onTap: () => onTap(context, 2),
             ),
             ListTile(
-              leading: Icon(Icons.people),
-              title: Text('About Us'),
+              leading: Icon(Icons.edit),
+              title: Text('Note'),
               onTap: () => onTap(context, 3),
             ),
             ListTile(

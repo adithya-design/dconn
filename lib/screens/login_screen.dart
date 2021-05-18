@@ -1,5 +1,5 @@
 import 'package:dconn/mainhome.dart';
-import 'package:dconn/screens/chat_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:dconn/components/rounded_button.dart';
 import 'package:dconn/constants.dart';
@@ -14,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  String email;
-  String password;
+  var email;
+  var password;
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:dconn/constants.dart';
 import 'package:dconn/components/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:dconn/screens/chat_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -15,10 +14,10 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
 
-  String email;
-  String password;
-  String mNum;
-  String name;
+  var email;
+  var password;
+  var mNum;
+  var name;
 
   @override
   Widget build(BuildContext context) {
