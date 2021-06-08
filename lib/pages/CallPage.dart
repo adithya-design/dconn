@@ -1,8 +1,10 @@
+import 'package:dconn/screens/Note.dart';
 import 'package:flutter/material.dart';
 import '../utils/AppID.dart';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
+import 'package:rich_text_editor/rich_text_editor.dart';
 
 class CallPage extends StatefulWidget {
   final String? channelName;
@@ -14,6 +16,8 @@ class CallPage extends StatefulWidget {
 }
 
 class _CallPageState extends State<CallPage> {
+  SpannableTextEditingController _controller = SpannableTextEditingController();
+
   static final _users = <int>[];
   final _infoStrings = <String>[];
   bool muted = false;
@@ -110,6 +114,7 @@ class _CallPageState extends State<CallPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          //mute button
           RawMaterialButton(
             onPressed: _onToggleMute,
             child: Icon(
@@ -122,6 +127,7 @@ class _CallPageState extends State<CallPage> {
             fillColor: muted ? Colors.blueAccent : Colors.white,
             padding: const EdgeInsets.all(12.0),
           ),
+          //end call button
           RawMaterialButton(
             onPressed: () => _onCallEnd(context),
             child: Icon(
@@ -134,6 +140,7 @@ class _CallPageState extends State<CallPage> {
             fillColor: Colors.redAccent,
             padding: const EdgeInsets.all(15.0),
           ),
+          //camera on
           RawMaterialButton(
             onPressed: _onSwitchCamera,
             child: Icon(
@@ -154,19 +161,52 @@ class _CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(' Dconn Meeting Calling'),
-      ),
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Stack(
-          children: <Widget>[
-            _viewRows(),
-            _toolbar(),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: _viewRows(),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Scrollbar(
+                child: TextField(
+                  controller: _controller,
+                  keyboardType: TextInputType.text,
+                  maxLines: null,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    filled: false,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          StyleToolbar(
+            controller: _controller,
+          ),
+          // Container(
+          //   child: _toolbar(),
+          // ),
+        ],
       ),
     );
+
+    // return Scaffold(
+    //   // appBar: AppBar(
+    //   //   toolbarHeight: 10,
+    //   //   title: Text(' Dconn Meeting Calling'),
+    //   // ),
+    // backgroundColor: Colors.black,
+    // body: Column(
+    //   children: <Widget>[
+    //     _viewRows(),
+    //     _toolbar(),
+    //   ],
+    // ),
+    // );
   }
 
   /// Helper function to get list of native views
@@ -179,7 +219,8 @@ class _CallPageState extends State<CallPage> {
 
   /// Video view wrapper
   Widget _videoView(view) {
-    return Expanded(child: Container(child: view));
+    return Container(width: 150, height: 100, child: view);
+    // return Expanded(child: Container(child: view));
   }
 
   /// Video view row wrapper
@@ -198,8 +239,11 @@ class _CallPageState extends State<CallPage> {
     switch (views.length) {
       case 1:
         return Container(
-            child: Column(
-          children: <Widget>[_videoView(views[0])],
+            child: Row(
+          children: <Widget>[
+            // _videoView(views[0])
+            _expandedVideoRow([views[0]])
+          ],
         ));
       case 2:
         return Container(

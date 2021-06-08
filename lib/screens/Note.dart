@@ -22,7 +22,7 @@ class _NoteState extends State<Note> {
               child: Scrollbar(
                 child: TextField(
                   controller: _controller,
-                  keyboardType: TextInputType.multiline,
+                  keyboardType: TextInputType.text,
                   maxLines: null,
                   decoration: InputDecoration(
                     border: InputBorder.none,
