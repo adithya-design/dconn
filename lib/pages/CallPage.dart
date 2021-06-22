@@ -247,7 +247,7 @@ class _CallPageState extends State<CallPage> {
         ));
       case 2:
         return Container(
-            child: Column(
+            child: Row(
           children: <Widget>[
             _expandedVideoRow([views[0]]),
             _expandedVideoRow([views[1]])
@@ -255,7 +255,7 @@ class _CallPageState extends State<CallPage> {
         ));
       case 3:
         return Container(
-            child: Column(
+            child: Row(
           children: <Widget>[
             _expandedVideoRow(views.sublist(0, 2)),
             _expandedVideoRow(views.sublist(2, 3))
@@ -263,7 +263,7 @@ class _CallPageState extends State<CallPage> {
         ));
       case 4:
         return Container(
-            child: Column(
+            child: Row(
           children: <Widget>[
             _expandedVideoRow(views.sublist(0, 2)),
             _expandedVideoRow(views.sublist(2, 4))
